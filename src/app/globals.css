@@ -243,10 +243,65 @@ textarea {
   list-style: none;
 }
 
+.reminder-callout {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.reminders-grid {
+  grid-template-columns: 1fr;
+}
+
+.reminder-list {
+  display: grid;
+  gap: 12px;
+}
+
+.reminder-item {
+  align-items: center;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding-top: 14px;
+}
+
+.reminder-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.urgency-overdue {
+  background: #fff2f0;
+  color: var(--danger);
+}
+
+.urgency-due-soon {
+  background: #fff8e6;
+  color: var(--warning);
+}
+
+.urgency-later {
+  background: #eef7f5;
+  color: var(--accent-dark);
+}
+
 @media (max-width: 700px) {
   .topbar,
-  .page-header {
+  .page-header,
+  .reminder-callout,
+  .reminder-item {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .reminder-actions {
+    justify-content: flex-start;
   }
 }

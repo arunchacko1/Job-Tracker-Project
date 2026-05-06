@@ -7,7 +7,12 @@ import { statusLabels, statusOptions } from "@/lib/status";
 
 export default async function DashboardPage() {
   const userId = await requireUserId();
-  const [applications, counts] = await Promise.all([
+  const today = new Date();
+  const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const endOfDueSoonWindow = new Date(startOfToday);
+  endOfDueSoonWindow.setDate(endOfDueSoonWindow.getDate() + 8);
+
+  const [applications, counts, dueSoonCount] = await Promise.all([
     prisma.application.findMany({
       where: { userId },
       orderBy: [{ followUpDate: "asc" }, { updatedAt: "desc" }],
@@ -17,6 +22,16 @@ export default async function DashboardPage() {
       by: ["status"],
       where: { userId },
       _count: true
+    }),
+    prisma.application.count({
+      where: {
+        userId,
+        status: { in: ["WISHLIST", "APPLIED", "INTERVIEWING", "OFFER"] },
+        followUpDate: {
+          gte: startOfToday,
+          lt: endOfDueSoonWindow
+        }
+      }
     })
   ]);
 
@@ -43,6 +58,17 @@ export default async function DashboardPage() {
             <strong>{countByStatus.get(status) ?? 0}</strong>
           </div>
         ))}
+      </section>
+
+      <section className="card reminder-callout">
+        <div>
+          <p className="eyebrow">Next actions</p>
+          <h2>{dueSoonCount} follow-ups due soon</h2>
+          <p className="muted">Review opportunities that need attention today or within the next week.</p>
+        </div>
+        <Link className="button" href="/reminders">
+          Open reminders
+        </Link>
       </section>
 
       <section>

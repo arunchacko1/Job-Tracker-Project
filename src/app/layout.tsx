@@ -30,6 +30,7 @@ export default async function RootLayout({
                 <>
                   <Link href="/dashboard">Dashboard</Link>
                   <Link href="/applications">Applications</Link>
+                  <Link href="/reminders">Reminders</Link>
                   <Link className="button" href="/applications/new">
                     Add application
                   </Link>
