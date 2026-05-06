@@ -1,4 +1,5 @@
 import { ApplicationStatus } from "@prisma/client";
+import Link from "next/link";
 import { ApplicationCard } from "@/components/application-card";
 import { prisma } from "@/lib/prisma";
 import { requireUserId } from "@/lib/session";
@@ -40,9 +41,9 @@ export default async function ApplicationsPage({ searchParams }: ApplicationsPag
           <h1>All opportunities</h1>
           <p className="muted">Search and filter without losing the simple data model underneath.</p>
         </div>
-        <a className="button" href="/applications/new">
+        <Link className="button" href="/applications/new">
           Add application
-        </a>
+        </Link>
       </div>
 
       <form className="form" action="/applications">

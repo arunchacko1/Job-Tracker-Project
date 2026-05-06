@@ -1,4 +1,5 @@
 import type { Application } from "@prisma/client";
+import Link from "next/link";
 import { statusLabels } from "@/lib/status";
 
 type ApplicationCardProps = {
@@ -24,9 +25,9 @@ export function ApplicationCard({ application }: ApplicationCardProps) {
         <strong>Applied:</strong> {formatDate(application.dateApplied)}
       </p>
       <div className="actions-row">
-        <a className="secondary-button" href={`/applications/${application.id}`}>
+        <Link className="secondary-button" href={`/applications/${application.id}`}>
           View details
-        </a>
+        </Link>
       </div>
     </article>
   );

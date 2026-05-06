@@ -1,4 +1,5 @@
 import { ApplicationStatus } from "@prisma/client";
+import Link from "next/link";
 import { ApplicationCard } from "@/components/application-card";
 import { prisma } from "@/lib/prisma";
 import { requireUserId } from "@/lib/session";
@@ -30,9 +31,9 @@ export default async function DashboardPage() {
           <h1>Your job search cockpit</h1>
           <p className="muted">Track each application, keep follow-ups visible, and stay organized throughout your search.</p>
         </div>
-        <a className="button" href="/applications/new">
+        <Link className="button" href="/applications/new">
           Add application
-        </a>
+        </Link>
       </div>
 
       <section className="grid stats-grid" aria-label="Application counts by status">
@@ -50,9 +51,9 @@ export default async function DashboardPage() {
             <h2>Recent applications</h2>
             <p className="muted">Sorted by follow-up date first, then most recently updated.</p>
           </div>
-          <a className="secondary-button" href="/applications">
+          <Link className="secondary-button" href="/applications">
             View all
-          </a>
+          </Link>
         </div>
         <div className="grid application-grid">
           {applications.map((application) => (

@@ -1,4 +1,5 @@
 import type { Application, ApplicationStatus } from "@prisma/client";
+import Link from "next/link";
 import { statusLabels, statusOptions } from "@/lib/status";
 
 type ApplicationFormProps = {
@@ -79,9 +80,9 @@ export function ApplicationForm({ action, application, submitLabel }: Applicatio
         <button className="button" type="submit">
           {submitLabel}
         </button>
-        <a className="secondary-button" href="/applications">
+        <Link className="secondary-button" href="/applications">
           Cancel
-        </a>
+        </Link>
       </div>
     </form>
   );

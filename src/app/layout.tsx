@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 import { authOptions } from "@/lib/auth";
 import { SignOutButton } from "@/components/sign-out-button";
 import "./globals.css";
@@ -21,23 +22,23 @@ export default async function RootLayout({
       <body>
         <div className="shell">
           <header className="topbar">
-            <a className="brand" href="/dashboard">
+            <Link className="brand" href="/dashboard">
               Job Application Tracker
-            </a>
+            </Link>
             <nav className="nav" aria-label="Main navigation">
               {session?.user ? (
                 <>
-                  <a href="/dashboard">Dashboard</a>
-                  <a href="/applications">Applications</a>
-                  <a className="button" href="/applications/new">
+                  <Link href="/dashboard">Dashboard</Link>
+                  <Link href="/applications">Applications</Link>
+                  <Link className="button" href="/applications/new">
                     Add application
-                  </a>
+                  </Link>
                   <SignOutButton />
                 </>
               ) : (
-                <a className="button" href="/signin">
+                <Link className="button" href="/signin">
                   Sign in
-                </a>
+                </Link>
               )}
             </nav>
           </header>

@@ -15,10 +15,11 @@ A full-stack job application tracking app built with Next.js, TypeScript, Postgr
 1. Copy `.env.example` to `.env`.
 2. Update `DATABASE_URL` if your PostgreSQL credentials are different.
 3. Install dependencies with `npm install`.
-4. Run `npm run prisma:migrate`.
-5. Run `npm run db:seed`.
-6. Run `npm run dev`.
-7. Sign in with `demo@example.com` and `password123`.
+4. Start PostgreSQL locally. If you use Docker, run `docker compose up -d`.
+5. Run `npm run prisma:migrate -- --name init`.
+6. Run `npm run db:seed`.
+7. Run `npm run dev`.
+8. Sign in with `demo@example.com` and `password123`.
 
 ## Technical Highlights
 
