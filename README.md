@@ -21,6 +21,13 @@ A full-stack job application tracking app built with Next.js, TypeScript, Postgr
 7. Run `npm run dev`.
 8. Sign in with `demo@example.com` and `password123`.
 
+## Testing
+
+- Run unit tests with `npm test`.
+- Run browser flow tests with `npm run test:e2e`.
+- Run the full test suite with `npm run test:all`.
+- End-to-end tests require PostgreSQL to be running and the schema to be migrated.
+
 ## Technical Highlights
 
 - Authenticated user-owned data.
