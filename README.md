@@ -27,6 +27,7 @@ A full-stack job application tracking app built with Next.js, TypeScript, Postgr
 - Run browser flow tests with `npm run test:e2e`.
 - Run the full test suite with `npm run test:all`.
 - End-to-end tests require PostgreSQL to be running and the schema to be migrated.
+- GitHub Actions runs migrations, unit tests, production build, and browser tests on pushes and pull requests.
 
 ## Technical Highlights
 
