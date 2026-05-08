@@ -29,6 +29,44 @@ A full-stack job application tracking app built with Next.js, TypeScript, Postgr
 - End-to-end tests require PostgreSQL to be running and the schema to be migrated.
 - GitHub Actions runs migrations, unit tests, production build, and browser tests on pushes and pull requests.
 
+## Deployment
+
+This app needs a Node.js host plus a PostgreSQL database. The simplest setup is Vercel for the Next.js app and Neon, Supabase, Railway, or Render PostgreSQL for the database.
+
+### Required Environment Variables
+
+- `DATABASE_URL`: production PostgreSQL connection string.
+- `NEXTAUTH_SECRET`: long random secret. Generate one with `openssl rand -base64 32`.
+- `NEXTAUTH_URL`: deployed app URL, for example `https://your-app.vercel.app`.
+
+### Vercel + Hosted PostgreSQL
+
+1. Push the repository to GitHub.
+2. Create a PostgreSQL database with Neon, Supabase, Railway, or Render.
+3. In Vercel, import the GitHub repository as a Next.js project.
+4. Add the required environment variables in Vercel project settings.
+5. Keep the default build command: `npm run build`.
+6. Deploy the app.
+7. Apply production migrations from your machine or CI:
+
+   ```bash
+   DATABASE_URL="your-production-database-url" npx prisma migrate deploy
+   ```
+
+8. Optional: seed a demo user in production only if you want demo credentials available:
+
+   ```bash
+   DATABASE_URL="your-production-database-url" npm run db:seed
+   ```
+
+### Generic Node Host
+
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Start command: `npm start`
+- Before starting the production app for the first time, run `npx prisma migrate deploy`.
+- Use Node.js 24 to match the GitHub Actions workflow, or configure the host to a supported current Node.js LTS version.
+
 ## Technical Highlights
 
 - Authenticated user-owned data.
